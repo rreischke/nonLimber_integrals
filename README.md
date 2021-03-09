@@ -16,7 +16,12 @@ where K is in each case the kernel for the appropriate tracer and <img src="http
 The code is compiled by typing make install. In the main directory there is another makefile for an example main. The documentation can be created via doxygen -g doxyfile followed by doxygen doxyfile .
 Only standard libraries and the GSL are needed.
 
-For the python module, `pip install .` (or `pip install -e .` for a `develop` install) should do the trick. An up-to-date version of `pip` (10+) is required. You might have to install pybind11, but this should work automatically
+For the python module, `pip install .` (or `pip install -e .` for a `develop` install) should do the trick. An up-to-date version of `pip` (10+) is required. You might have to install pybind11, but this should work automatically.
 
 ##  Running the code
-There exists a python test file showing which things one should pass to the constructor of the class. In principle the class needs to be initialize
+There exists a python test file showing which things one should pass to the constructor of the class. In principle the class needs to be initialized once. This is especially true if the Bessel functions are precomputed since this would generate unnecessary overhead. If you want to update the spectra, the weights or anything, you should just call the init_splines method to set up the new splines without touching the Bessel functions.
+
+The arguments in the constructor are:
+* precompute: if set True, Besselfunctions are precomputed, speeds up the calculation.
+* number_count: the first `<number_count>` entries are treated as the galaxy clustering, while the remaining are treated as cosmic shear. 
+
