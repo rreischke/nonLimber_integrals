@@ -22,6 +22,8 @@ For the python module, `pip install .` (or `pip install -e .` for a `develop` in
 There exists a python test file showing which things one should pass to the constructor of the class. In principle the class needs to be initialized once. This is especially true if the Bessel functions are precomputed since this would generate unnecessary overhead. If you want to update the spectra, the weights or anything, you should just call the init_splines method to set up the new splines without touching the Bessel functions.
 
 The arguments in the constructor are:
-* precompute: if set True, Besselfunctions are precomputed, speeds up the calculation.
-* number_count: the first `<number_count>` entries are treated as the galaxy clustering, while the remaining are treated as cosmic shear. 
-
+* `precompute`: if set `True`, Besselfunctions are precomputed, speeds up the calculation.
+* `number_count`: the first `number_count` entries are treated as the galaxy clustering, while the remaining are treated as cosmic shear. 
+* `z_bg` and `chi_bg`: two arrays of the same length specifying the relation between redshift and comoving distance
+* `chi_cl` and `kernel`: this specifies the Integration Kernels, all kernels must have the same comoving distance range.  `kernel` itself is an array with `len(chi_cl)` rows. The number of columns corresponds to the number of kernels included and is the sum of the `number_count` and the number of cosmic shear bins.
+*`k_pk`, `z_pk` and `pk`: the matter power spectrum over which is integrated (all bias terms are must be included in the kernel). `pk` is a one-dimensional array and must have k as the fast index and z as the slow one. (see example)
