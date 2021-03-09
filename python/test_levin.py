@@ -31,6 +31,8 @@ if __name__ == "__main__":
     ell = np.arange(2, 4000, 1)
     t0 = time.time()
     # actually calculate the Cls, returns a list for galaxy clustering, ggl and cosmic shear
+    # Each one is again a list of n_tomo_tracer_A (n_tomo_tracer_B+1)/2 entries with the length
+    # len(ell). The (0,0) bin corresponds to 0 and the (0,2) bin to 2 etc.
     Cl_gg, Cl_gs, Cl_ss = lp.compute_C_ells(ell)
     t1 = time.time()
     total = t1-t0

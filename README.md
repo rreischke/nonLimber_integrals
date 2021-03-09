@@ -27,3 +27,5 @@ The arguments in the constructor are:
 * `z_bg` and `chi_bg`: two arrays of the same length specifying the relation between redshift and comoving distance
 * `chi_cl` and `kernel`: this specifies the Integration Kernels, all kernels must have the same comoving distance range.  `kernel` itself is an array with `len(chi_cl)` rows. The number of columns corresponds to the number of kernels included and is the sum of the `number_count` and the number of cosmic shear bins.
 * `k_pk`, `z_pk` and `pk`: the matter power spectrum over which is integrated (all bias terms are must be included in the kernel). `pk` is a one-dimensional array and must have k as the fast index and z as the slow one. (see example)
+
+The output of `compute_C_ells` is a list of  the galaxy-clustering, galaxy-galaxy lensing and cosmic shear spectra respectively. The individual spectra are ordered under the condition i<=j with respect to  tomographic bin combination (see also test_levin.py)
