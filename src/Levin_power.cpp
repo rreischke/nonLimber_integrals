@@ -167,8 +167,8 @@ void Levin_power::set_pointer()
 
 uint Levin_power::find_kernel_maximum(std::vector<double> kernel)
 {
-    uint result = 0.0;
-    for (uint i = 0; i < kernel.size(); i++)
+    uint result = 0;
+    for (uint i = 0; i < kernel.size() - 1; i++)
     {
         if (kernel.at(i + 1) < kernel.at(i))
         {
